@@ -9,3 +9,25 @@ ORDER BY emp_no;
 -- Check the table
 
 SELECT * FROM retirement_titles;
+
+-- Use Dictinct with Orderby to remove duplicate rows
+SELECT DISTINCT ON (emp_no) rt.emp_no,
+rt.first_name,
+rt.last_name,
+rt.title
+
+INTO unique_titles
+FROM retirement_titles as rt
+ORDER BY emp_no, to_date DESC;
+
+SELECT * FROM unique_titles;
+
+SELECT COUNT(ut.title),title
+INTO retiring_titles
+FROM unique_titles as ut
+GROUP BY ut.title
+ORDER BY ut.count DESC;
+
+SELECT * FROM retiring_titles;
+
+
