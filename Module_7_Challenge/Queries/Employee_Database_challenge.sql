@@ -30,4 +30,22 @@ ORDER BY ut.count DESC;
 
 SELECT * FROM retiring_titles;
 
+-- (Deliverable 2) Create new table for employees eligible for the mentorship program
+SELECT DISTINCT ON (emp_no) e.emp_no,
+e.first_name,
+e.last_name,
+e.birth_date,
+dt.from_date,
+dt.to_date,
+t.title
+INTO mentorship_eligibility
+FROM employees as e
+INNER JOIN dept_emp as dt
+ON (e.emp_no = dt.emp_no)
+INNER JOIN titles as t
+ON (e.emp_no = t.emp_no)
+WHERE (birth_date BETWEEN '1965-01-01' AND '1965-12-31') AND (dt.to_date = '9999-01-01')
+ORDER BY emp_no;
+
+SELECT * FROM mentorship_eligibility;
 
