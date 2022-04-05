@@ -1,4 +1,4 @@
-# Pewlett-Hackard-Analysis_1
+# Pewlett-Hackard-Analysis
 
 # Deliverable 3: Analysis 
 The analysis should contain the following:
